@@ -5,19 +5,32 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = "Online Magazine"
+  config.site_title = "Disruptional Online Magazine"
+
+  config.register_javascript 'ckeditor/init.js'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
-  # config.site_title_link = "/"
+  config.site_title_link = "/"
+
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add :label => "Sites" do |sites|
+        sites.add :label => "Google", :url => "http://google.com", :html_options => { :target => :blank }
+        sites.add :label => "Facebook", :url => "http://facebook.com", :html_options => { :target => :blank }
+        sites.add :label => "Pinterest", :url => "http://https://www.pinterest.com", :html_options => { :target => :blank }
+        sites.add :label => "Vine", :url => "http://https://www.vine.co", :html_options => { :target => :blank }
+      end
+    end
+  end
 
   # Set an optional image to be displayed for the header
   # instead of a string (overrides :site_title)
   #
   # Note: Aim for an image that's 21px high so it fits in the header.
   #
-  # config.site_title_image = "logo.png"
+  #config.site_title_image = "logo.png"
 
   # == Default Namespace
   #
