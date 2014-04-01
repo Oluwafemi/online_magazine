@@ -27,6 +27,12 @@ gem 'ransack'#,             github: 'ernie/ransack',            branch: 'rails-4
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'formtastic',          github: 'justinfrench/formtastic'
 
+gem "mini_magick"
+gem 'carrierwave'
+gem 'fog'#, '~> 1.3.1'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem "ckeditor"
+
 group :development, :test do
   gem 'rspec-rails', '2.13.1'
   # The following optional lines are part of the advanced setup.
