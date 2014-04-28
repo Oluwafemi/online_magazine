@@ -1,6 +1,7 @@
 ActiveAdmin.register Article do
   actions :all, :except => [:destroy]
   scope_to :current_admin_user, :association_method => :current_articles
+  form :partial => "form"
 
   controller do
     def permitted_params
@@ -51,22 +52,22 @@ ActiveAdmin.register Article do
   filter :created_at
   filter :updated_at
 
-  form(:html => { :multipart => true }) do |f|
-    f.inputs "Article Details" do
-      f.input :title
-      f.input :introduction
-      if f.object.persisted?
-        f.input :user_article_category, :label => "Select Article Category", :include_blank => false, 
-          :as => :select, :collection => current_admin_user.current_article_categories
-      else
-        f.input :user_article_category, :label => "Select Article Category", 
-          :include_blank => "choose article category", :as => :select, :collection => current_admin_user.current_article_categories
-      end
-      f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.user_thumb.to_s)
+  #form(:html => { :multipart => true }) do |f|
+  #  f.inputs "Article Details" do
+  #    f.input :title
+  #    f.input :introduction
+  #    if f.object.persisted?
+  #      f.input :user_article_category, :label => "Select Article Category", :include_blank => false, 
+  #        :as => :select, :collection => current_admin_user.current_article_categories
+  #    else
+  #      f.input :user_article_category, :label => "Select Article Category", 
+  #        :include_blank => "choose article category", :as => :select, :collection => current_admin_user.current_article_categories
+  #    end
+  #    f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.user_thumb.to_s)
       #f.input :remove_image, :as => :boolean
-      f.input :body, :as => :ckeditor, :input_html => { :ckeditor => { :height => 400, :toolbar => 'Full' } }
-    end
-    f.actions
-  end
+  #    f.input :body, :as => :ckeditor, :input_html => { :ckeditor => { :height => 400, :toolbar => 'Full' } }
+  #  end
+  #  f.actions
+  #end
   
 end

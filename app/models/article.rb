@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
 	belongs_to :user_article_category 
 
 	validates :title, :introduction, :user_article_category_id, :body, :presence => true #:image
-    validates :introduction, :length => { :in => 100..150 }
+    validates :introduction, :length => { :in => 100..200 }
     validates :body, :length => { :in => 500..2500 }
 
     delegate :article_category_name, :to => :user_article_category
