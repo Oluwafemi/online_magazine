@@ -72,7 +72,7 @@ ActiveAdmin.register AdminUser do
           ActiveRecord::Base.connection.execute("UPDATE user_article_categories SET enabled = true \
             WHERE article_category_id = #{id} AND admin_user_id = #{admin.id}")
         end 
-        redirect_to :action => :index
+        redirect_to :action => :show
       else
         admin.valid?
         redirect_to :action => :edit

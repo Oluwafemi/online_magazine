@@ -24,6 +24,10 @@ class AdminUser < ActiveRecord::Base
     user_article_categories.user_current_article_categories
   end
 
+  def current_active_categories
+    user_article_categories.user_current_active_categories
+  end
+
   def current_articles
     if superuser
       Article.order_by_updated_at

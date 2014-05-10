@@ -11,6 +11,10 @@ class ArticleCategory < ActiveRecord::Base
     where('active = TRUE')
   end
 
+  def currently_active
+    active
+  end
+
   def permitted_params
   	params.require(:article_category).permit(:name, :allow_readers_comment, :active)
   end

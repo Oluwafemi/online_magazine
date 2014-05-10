@@ -22,4 +22,13 @@ class UserArticleCategory < ActiveRecord::Base
     user_user_article_categories.each { |user_art| user_article_categories << user_art.article_category }
   end
 
+  def self.user_current_active_categories
+    user_user_article_categories = where("enabled = true")
+    user_article_categories = user_user_article_categories.select { |art| art.currently_active_article_category }
+  end
+
+  def currently_active_article_category
+    article_category.currently_active
+  end
+
 end
