@@ -9,7 +9,7 @@
     - else
       = f.input :user_article_category, :label => "Select Article Category", 
           :include_blank => "choose article category", :as => :select, :collection => current_admin_user.current_active_categories
-    = f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.user_thumb.to_s)
+    = f.input :image, :label => "Article Image", :as => :file, :hint => f.template.image_tag(f.object.image.user_thumb.to_s)
     -#f.input :remove_image, :as => :boolean
     = f.input :body, :label => "Article Content", :as => :ckeditor, :input_html => { :ckeditor => { :height => 400, :toolbar => 'Full' } }
   = f.actions :submit

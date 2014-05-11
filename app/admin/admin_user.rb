@@ -1,7 +1,7 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation
   actions :all, :except => [:destroy]
-      
+
   show :title => :current_title do
     attributes_table do
       row :email
@@ -11,10 +11,13 @@ ActiveAdmin.register AdminUser do
       row :created_at
       row :updated_at
       row :superuser
+      row 'Enabled Article Categories' do |n| #(&:name)
+        AdminUser.find(params[:id]).current_article_categories.map { |art| art.name }.join("<br /><br />").html_safe
+      end 
     end
     active_admin_comments
   end
-
+  
   controller do
     
     def action_methods
@@ -34,11 +37,6 @@ ActiveAdmin.register AdminUser do
       else
         redirect_to :action => :new
       end
-    end
-
-    def update
-      #
-      super
     end
     
     def update
@@ -109,9 +107,12 @@ ActiveAdmin.register AdminUser do
   filter :sign_in_count
 
   form do |f|
-    if f.object.persisted? and current_admin_user.id == f.object.id
+    if f.object.persisted?
       f.inputs do  
         f.input :email
+        if current_admin_user.id != f.object.id
+          f.input :superuser, :label => "Super User Priveleges" 
+        end
         f.input :current_article_categories, :as => :check_boxes, :multiple => true, :collection => ArticleCategory.all, :required => false
       end
     else
