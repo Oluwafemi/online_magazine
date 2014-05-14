@@ -2,12 +2,16 @@ if (typeof(CKEDITOR) != 'undefined')
 {
   CKEDITOR.editorConfig = function(config) {
     config.toolbar = [
+    [ 'Source' ],
     [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', 'Undo', 'Redo' ],
     [ 'Find', 'Replace', 'SelectAll', 'Scayt' ],    
     [ 'NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', 'BidiLtr', 'BidiRtl' ],
-    [ 'Link', 'Unlink'],
     [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', 'RemoveFormat' ],
-    [ 'TextColor', 'BGColor' ]
+    [ 'TextColor', 'BGColor' ],
+    [ 'Link', 'Unlink', 'Anchor'],
+    [ 'CreatePlaceholder', 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'InsertPre' ],
+    [ 'Styles', 'Format' ],
+    [ 'ShowBlocks' ]
     ];
     config.disableNativeSpellChecker = false;
     config.toolbarCanCollapse = true;
