@@ -17,6 +17,8 @@ if (typeof(CKEDITOR) != 'undefined')
     config.toolbarCanCollapse = true;
     config.pasteFromWordRemoveFontStyles = false;
     config.scayt_autoStartup = true;
+    //config.filebrowserBrowseUrl = '/browser/browse.php';
+    //config.filebrowserUploadUrl = '/uploader/upload.php';
     //config.uiColor = "#AADC6E";
   }
 } else{
