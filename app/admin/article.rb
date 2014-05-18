@@ -5,8 +5,8 @@ ActiveAdmin.register Article do
 
   controller do
     def permitted_params
-      params.permit article: [:title, :user_article_category_id, :introduction, :created_at, :updated_at, :image,
-        :image_cache, :img_url, :body, :reviewed]
+      params.permit article: [:title, :user_article_category_id, :introduction, :created_at, :updated_at,
+        :body, :reviewed]
     end    
   end
 
@@ -17,9 +17,6 @@ ActiveAdmin.register Article do
       row :introduction
       row :created_at
       row :updated_at
-      row :image do
-        image_tag(article.image.to_s)
-      end
     end
     active_admin_comments
   end
@@ -51,23 +48,5 @@ ActiveAdmin.register Article do
   filter :title 
   filter :created_at
   filter :updated_at
-
-  #form(:html => { :multipart => true }) do |f|
-  #  f.inputs "Article Details" do
-  #    f.input :title
-  #    f.input :introduction
-  #    if f.object.persisted?
-  #      f.input :user_article_category, :label => "Select Article Category", :include_blank => false, 
-  #        :as => :select, :collection => current_admin_user.current_article_categories
-  #    else
-  #      f.input :user_article_category, :label => "Select Article Category", 
-  #        :include_blank => "choose article category", :as => :select, :collection => current_admin_user.current_article_categories
-  #    end
-  #    f.input :image, :as => :file, :hint => f.template.image_tag(f.object.image.user_thumb.to_s)
-      #f.input :remove_image, :as => :boolean
-  #    f.input :body, :as => :ckeditor, :input_html => { :ckeditor => { :height => 400, :toolbar => 'Full' } }
-  #  end
-  #  f.actions
-  #end
   
 end

@@ -17,8 +17,13 @@ if (typeof(CKEDITOR) != 'undefined')
     config.toolbarCanCollapse = true;
     config.pasteFromWordRemoveFontStyles = false;
     config.scayt_autoStartup = true;
-    //config.filebrowserBrowseUrl = '/browser/browse.php';
-    //config.filebrowserUploadUrl = '/uploader/upload.php';
+    config.filebrowserBrowseUrl = "/ckeditor/attachment_files";
+    config.filebrowserFlashBrowseUrl = "/ckeditor/attachment_files";
+    config.filebrowserFlashUploadUrl = "/ckeditor/attachment_files";
+    config.filebrowserImageBrowseLinkUrl = "/ckeditor/pictures";
+    config.filebrowserImageBrowseUrl = "/ckeditor/pictures";
+    config.filebrowserImageUploadUrl = "/ckeditor/pictures";
+    config.filebrowserUploadUrl = "/ckeditor/attachment_files";
     //config.uiColor = "#AADC6E";
   }
 } else{
