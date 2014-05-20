@@ -27,3 +27,6 @@ doc/
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore local file uploads
+/public/uploads

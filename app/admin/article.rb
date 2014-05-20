@@ -5,8 +5,8 @@ ActiveAdmin.register Article do
 
   controller do
     def permitted_params
-      params.permit article: [:title, :user_article_category_id, :introduction, :created_at, :updated_at,
-        :body, :reviewed]
+      params.permit article: [:title, :user_article_category_id, :introduction, :created_at, :updated_at, :image,
+        :image_cache, :img_url, :body, :reviewed]
     end    
   end
 
@@ -17,6 +17,9 @@ ActiveAdmin.register Article do
       row :introduction
       row :created_at
       row :updated_at
+      row :image do
+        image_tag(article.image.to_s)
+      end
     end
     active_admin_comments
   end
