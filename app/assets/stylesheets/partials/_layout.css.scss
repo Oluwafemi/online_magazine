@@ -1,0 +1,11 @@
+@import "sussy";
+
+$total-columns : 12;
+$column-width : 5em;
+$gutter-width : 1em;
+$grid-padding : $gutter-width;
+
+[class^="inner"] {
+	@include container;
+	@include susy-grid-background;
+}
