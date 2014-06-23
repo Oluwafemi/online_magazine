@@ -26,6 +26,8 @@ module OnlineMagazine
     # config.i18n.default_locale = :de
 
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+
+    #config.compass.require "susy"
     
     config.generators do |g|
         g.template_engine :haml

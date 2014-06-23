@@ -6,5 +6,17 @@
   = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
   = javascript_include_tag "application", "data-turbolinks-track" => true
   = csrf_meta_tags
+  /[if lt IE 9]
+    %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
   %body
-    = yield
+    .inner
+      %ul.nav
+        %li.active
+          %a{:href => "/"} Home
+        %li
+          %a{:href => "/about"} About
+        %li
+          %a{:href => "/contact"} Contact
+      %h3 Seed International Magazine
+    .inner
+      = yield

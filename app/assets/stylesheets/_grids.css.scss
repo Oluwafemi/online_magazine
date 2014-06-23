@@ -1,0 +1,36 @@
+// Requirements
+// ============
+
+@import "susyone";
+
+$total-columns : 12;
+$column-width : 5em;
+$gutter-width : 1em;
+$grid-padding : $gutter-width;
+$border-box-sizing: true;
+
+// Breakpoint variables
+// ==================================================================
+==
+
+$M: 47em; // roughly speaking, around 750px wide with 16px body font
+$L: 75em; // roughly speaking, around 1200px wide with 16px body font
+
+[class^="inner"] {
+	@include container;
+	@include susy-grid-background;
+}
+
+nav[role="navigation"] {
+    @include at-breakpoint($M) {
+        @include span-columns(3,12);
+    }
+}
+
+.main-content {
+    @include at-breakpoint($M) {
+        @include prefix(1,12);
+        @include span-columns(9 omega,12);
+    }
+}
+
