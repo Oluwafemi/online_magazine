@@ -10,13 +10,14 @@
     %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
   %body
     .inner
-      %ul.nav
+      %h3 Seed International Magazine
+      %ul.nav{:role => "navigation"}
         %li.active
           %a{:href => "/"} Home
         %li
           %a{:href => "/about"} About
         %li
           %a{:href => "/contact"} Contact
-      %h3 Seed International Magazine
-    .inner
-      = yield
+      .main-content
+        = yield
+    %footer.inner footer section should be handled by a footer partial
