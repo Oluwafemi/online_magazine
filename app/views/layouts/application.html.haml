@@ -20,4 +20,14 @@
           %a{:href => "/contact"} Contact
       .main-content
         = yield
-    %footer.inner footer section should be handled by a footer partial
+    %footer.inner
+      %br
+      %hr
+      %ul.footnote-links-wrapper
+        %li.footnote-link
+          %a{:href => "#"} Terms & Conditions
+        %li.footnote-link
+          %a{:href => "#"} Contact Us
+        %li.footnote-link
+          %a{:href => "#"} Copyright #{Date.today.year}
+

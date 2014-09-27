@@ -5,10 +5,12 @@
     - @article_categories.each do |article_category|
       - recent_articles = article_category.recent_articles
       - unless recent_articles.nil?
-        %h3{:class => "category-title"}
-          = article_category.name
-          - recent_articles.each do |article|
-            %a
-              = article.title
-              = image_tag article.image.user_thumb.to_s
-            %p{:class => "story"}!= article.introduction
+        %hr.article-vertical-border
+        .article-cell
+          %h3{:class => "category-title"}
+            = article_category.name
+            - recent_articles.each do |article|
+              %a
+                = article.title
+                = image_tag article.image.user_thumb.to_s
+              %p{:class => "story"}!= article.introduction

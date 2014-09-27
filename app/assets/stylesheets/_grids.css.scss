@@ -2,9 +2,11 @@
 // ============
 
 @import "susyone";
+@import "compass/typography/vertical_rhythm";
+@import "mixins";
 
-$total-columns : 24;
-$column-width : 5em;
+$total-columns : 12;
+$column-width : 10em;
 $gutter-width : 1em;
 $grid-padding : 0; //$gutter-width;
 $border-box-sizing: true;
@@ -15,23 +17,40 @@ $border-box-sizing: true;
 $M: 47em; // roughly speaking, around 750px wide with 16px body font  em is body font size
 $L: 75em; // roughly speaking, around 1200px wide with 16px body font
 
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+@include establish-baseline;
+
 [class^="inner"] {
 	@include container;
-	@include susy-grid-background;
+	//@include susy-grid-background;
 }
 
 nav[role="navigation"] {
     @include at-breakpoint($M) {
-        @include span-columns(4,12);
+        @include span-columns(2,12);
     }
 }
 
 .main-content {
     @include at-breakpoint($M) {
-        @include prefix(1,24);
-        @include span-columns(20 omega,24);
+        @include prefix(1,12);
+        @include span-columns(10 omega,12);
     }
 }
 
+@include with-grid-settings(24,5em,1em,0) {
+     .footnote-links-wrapper {
+       @include container;
+     }
+     .footnote-link {
+       @include span-columns(4);
+       @include nth-omega;
+  }
+};
+
 $container-style: fluid;
+
+
 
