@@ -9,18 +9,15 @@
   /[if lt IE 9]
     %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
   %body
-    .inner
+    .container
       %h3 Seed International Magazine
-      %ul.nav{:role => "navigation"}
-        %li.active
-          %a{:href => "/"} Home
-        %li
-          %a{:href => "/about"} About
-        %li
-          %a{:href => "/contact"} Contact
+      %ul.nav.content-navigation
+      - @article_categories.each do |article_category|
+        %li.ok
+          = article_category.name
       .main-content
         = yield
-    %footer.inner
+    %footer.container
       %br
       %hr
       %ul.footnote-links-wrapper

@@ -4,8 +4,7 @@
     %br
     - @article_categories.each do |article_category|
       - recent_articles = article_category.recent_articles
-      - unless recent_articles.nil?
-        %hr.article-vertical-border
+      - unless recent_articles.empty?
         .article-cell
           %h3{:class => "category-title"}
             = article_category.name

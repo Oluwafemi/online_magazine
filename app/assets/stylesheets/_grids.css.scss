@@ -1,56 +1,37 @@
-// Requirements
-// ============
-
-@import "susyone";
-@import "compass/typography/vertical_rhythm";
+@import "susy";
+@import "normalize";
+@import "compass/utilities/general/clearfix";
+//@import "compass/typography/vertical_rhythm";
 @import "mixins";
 
-$total-columns : 12;
-$column-width : 10em;
-$gutter-width : 1em;
-$grid-padding : 0; //$gutter-width;
-$border-box-sizing: true;
+$susy: (
+  //debug: (image: show),
+  global-box-sizing: border-box,
+  use-custom: (rem: true),
+  columns: 12,
+  gutters: 1/4
+);
 
-// Breakpoint variables
-// ====================================================================
+@include border-box-sizing;
 
 $M: 47em; // roughly speaking, around 750px wide with 16px body font  em is body font size
 $L: 75em; // roughly speaking, around 1200px wide with 16px body font
 
-$base-font-size: 16px;
-$base-line-height: 24px;
+//$base-font-size: 16px;
+//$base-line-height: 24px;
 
-@include establish-baseline;
+//@include establish-baseline;
 
-[class^="inner"] {
-	@include container;
-	//@include susy-grid-background;
+.container {
+  @include container;
+  @include clearfix;
 }
 
-nav[role="navigation"] {
-    @include at-breakpoint($M) {
-        @include span-columns(2,12);
-    }
+.content-navigation {
+  @include span(2 of 12);
 }
 
 .main-content {
-    @include at-breakpoint($M) {
-        @include prefix(1,12);
-        @include span-columns(10 omega,12);
-    }
+  @include span(10 of 12 last);
+  @include clearfix; 
 }
-
-@include with-grid-settings(24,5em,1em,0) {
-     .footnote-links-wrapper {
-       @include container;
-     }
-     .footnote-link {
-       @include span-columns(4);
-       @include nth-omega;
-  }
-};
-
-$container-style: fluid;
-
-
-

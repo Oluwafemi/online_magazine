@@ -1,23 +1,55 @@
 // Screen
 // ======
 
+/*-----------------------------------------------
+   Table of contents
+   1. Reset
+   2. Typography
+   3. Basic layout
+   4. Widgets
+   5. Media items
+   6. Forms
+   7. Media queries
+   8. IE specific styles
+
+   Think in terms of components, not pages.
+   Think about types of things, not individual things.
+   Prefer classes to IDs.
+   Create composable classes.
+   Use descendent selectors to avoid redundant classes. 
+   Keep your selectors as short as possible.
+   Order your CSS rules loosely by specificity.
+   Prefer percentages for internal layout dimensions.
+
+   -------------------------------------------------*/
+
+
 @import "grids";
 
 
-.hr {
+hr {
     border: 0;
     height: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    //border-top: 1px solid rgba(0, 0, 0, 0.1); //border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid #eeeeee;
+    //for selected border-bottom: 1px solid #333;
 }
 
-.article-vertical-border {
-	@include span-columns(1,12);
-	@include nth-omega;
-	@include vertical-rotate(90deg);
-}
+//.article-vertical-border {
+//	@include span-columns(1,12);
+//	@include nth-omega;
+//	@include vertical-rotate(90deg);
+//}
 
 .article-cell {
-	@include span-columns(3,12);
-	@include nth-omega;
+	@include span(3 of 12);
+}
+
+nav.content-navigation li {
+    float: left;
+    border-right: 1px solid #ebebeb;
+    margin-right: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
