@@ -2,14 +2,21 @@
 .content
   .row
     %br
+    - count = 0
     - @article_categories.each do |article_category|
       - recent_articles = article_category.recent_articles
       - unless recent_articles.empty?
-        .article-cell
-          %h3{:class => "category-title"}
-            = article_category.name
-            - recent_articles.each do |article|
+        - recent_articles.each do |article|
+          - count += 1
+          .article-cell
+            %h3{:class => "category-title"}
+              = article_category.name
+              %br
               %a
                 = article.title
                 = image_tag article.image.user_thumb.to_s
               %p{:class => "story"}!= article.introduction
+    - empties = (count % 3) + 1
+    - unless empties == 1
+      - empties.times do
+        .article-cell

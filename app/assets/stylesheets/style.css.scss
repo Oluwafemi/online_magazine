@@ -21,6 +21,8 @@
    Order your CSS rules loosely by specificity.
    Prefer percentages for internal layout dimensions.
 
+   CSS should be used to cater for all aspects of presentation.
+
    -------------------------------------------------*/
 
 
@@ -32,7 +34,6 @@ hr {
     height: 0;
     //border-top: 1px solid rgba(0, 0, 0, 0.1); //border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     border-bottom: 1px solid #eeeeee;
-    //for selected border-bottom: 1px solid #333;
 }
 
 //.article-vertical-border {
@@ -42,14 +43,67 @@ hr {
 //}
 
 .article-cell {
-	@include span(3 of 12);
+	@include span(3 of 9);
+  border-right: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
+  height: 25em;
+  overflow: hidden;
+  &:nth-child(3n) {
+    @include last;
+    border-right: 0;
+  }
 }
 
-nav.content-navigation li {
-    float: left;
-    border-right: 1px solid #ebebeb;
-    margin-right: 8px;
-    padding-right: 8px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+.article-cell:nth-child(-n+4) {
+  border-top: 0;
 }
+
+.content-navigation ul {
+    padding: 0;
+    margin: 0;
+    margin-top: 2em;
+}
+
+li {
+  list-style-type: none;
+}
+
+.content-navigation li {
+    float: left;
+    margin: 1em;
+    margin-top: 0;
+    padding: 5%;
+    padding-top: 0;
+    width: 80%;
+    border-bottom: 1px solid #ebebeb;
+    //for selected border-bottom: 1px solid #333;
+    //margin-right: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px;
+}
+
+.content-navigation li:last-child {
+    border-bottom: 0;
+}
+
+nav.content-navigation {
+    border-right: 1px solid #ebebeb;
+}
+
+.content {
+  left-padding: 1em;
+  //padding-left: span(1 of 9); 
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #333;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+/*
+tr:nth-child(even) td {
+        background-color:#eee; Zebra strips on a table
+}*/

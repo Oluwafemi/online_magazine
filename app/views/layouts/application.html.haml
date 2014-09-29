@@ -1,22 +1,22 @@
 !!!
-%html{:lang => "en"}
+%html.no-js{:lang => "en"}
   %head
   %meta{:charset => "utf-8"}
   %title Online Magazine | #{yield(:title)}
   = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
   = javascript_include_tag "application", "data-turbolinks-track" => true
   = csrf_meta_tags
-  /[if lt IE 9]
-    %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
   %body
     .container
-      %h3 Seed International Magazine
-      %ul.nav.content-navigation
-      - @article_categories.each do |article_category|
-        %li.ok
-          = article_category.name
-      .main-content
-        = yield
+      %nav.content-navigation
+        %ul
+        - @article_categories.each do |article_category|
+          %li.content-link
+            %a{:href => "#"} 
+              = article_category.name
+      %hr.content-rule
+        .main-content
+          = yield
     %footer.container
       %br
       %hr
@@ -28,3 +28,5 @@
         %li.footnote-link
           %a{:href => "#"} Copyright #{Date.today.year}
 
+/ The HTML markup should describe the content. It should be clean, semantic, and free from presentational naming or order.
+/ before body /[if lt IE 9] already included by modenzr %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}

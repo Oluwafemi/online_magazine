@@ -20,6 +20,6 @@ class ArticleCategory < ActiveRecord::Base
   end
 
   def recent_articles
-  	articles.order_by_updated_at.limit(4)
+  	articles.order_by_updated_at.limit(20)
   end
 end

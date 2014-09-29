@@ -8,8 +8,9 @@ $susy: (
   //debug: (image: show),
   global-box-sizing: border-box,
   use-custom: (rem: true),
-  columns: 12,
-  gutters: 1/4
+  columns: 11,
+  gutters: 1/4,
+  gutter-position: inside,
 );
 
 @include border-box-sizing;
@@ -28,10 +29,14 @@ $L: 75em; // roughly speaking, around 1200px wide with 16px body font
 }
 
 .content-navigation {
-  @include span(2 of 12);
+  @include span(2 of 11);
+}
+
+.content-rule {
+  @include span(9 of 11 last);
 }
 
 .main-content {
-  @include span(10 of 12 last);
+  @include span(9 of 11 last);
   @include clearfix; 
 }
