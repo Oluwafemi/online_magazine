@@ -1,55 +1,11 @@
 // Screen
 // ======
 
-/*-----------------------------------------------
-   Table of contents
-   1. Reset
-   2. Typography
-   3. Basic layout
-   4. Widgets
-   5. Media items
-   6. Forms
-   7. Media queries
-   8. IE specific styles
-
-   Think in terms of components, not pages.
-   Think about types of things, not individual things.
-   Prefer classes to IDs.
-   Create composable classes.
-   Use descendent selectors to avoid redundant classes. 
-   Keep your selectors as short as possible.
-   Order your CSS rules loosely by specificity.
-   Prefer percentages for internal layout dimensions.
-
-   CSS should be used to cater for all aspects of presentation.
-
-   margins can take negative values and auto
-
-   margin: 24px 48px 20px;  24px(margin-top) 48px(margin-left) 20px(margin-bottom) 48px(margin-right)
-
-   size of em units changes with the browser’s font size
-   size of percentage units changes with the browser width
-
-img {max-width: 100%;} .ie6 img {width: 100%;}
-tr:nth-child(even) td {
-        background-color:#eee; Zebra strips on a table
-}
-.article-vertical-border {
-  @include span-columns(1,12);
-  @include nth-omega;
-  @include vertical-rotate(90deg);
-}
-= surround "<!--[if gt IE 8]><!--> <html class='no-js' lang='en'> <!--<![endif]-->", "</html>" do
-
-   -------------------------------------------------*/
-
-
 @import "grids";
 
 hr {
     border: 0;
     height: 0;
-    //border-top: 1px solid rgba(0, 0, 0, 0.1); //border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     border-bottom: 1px solid #eeeeee;
 }
 
@@ -66,6 +22,20 @@ hr {
   &:nth-child(-n+4) {
     border-top: 0;
   }
+  & img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; /* ie6 does not support this see RWD book */
+    height: auto; /* so images with a height attribute don’t scale in one dimension */
+  }
+}
+
+.category-title {
+  background-color: #eeeeee;
+  padding: 0.25em;
+  border: #333;
+  width: auto;
 }
 
 .content-navigation ul {

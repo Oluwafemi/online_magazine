@@ -14,11 +14,13 @@
   %body
     .container
       %nav.content-navigation
+        .navigation-header
         %ul
         - @article_categories.each do |article_category|
           %li.content-link
             %a{:href => "#"} 
               = article_category.name
+      %header
       %hr.content-rule
         .main-content
           = yield

@@ -11,11 +11,12 @@
           .article-cell
             %h3{:class => "category-title"}
               = article_category.name
-              %br
-              %a
-                = article.title
-                = image_tag article.image.user_thumb.to_s
-              %p{:class => "story"}!= article.introduction
+            %br
+            %a
+              = image_tag article.image.to_s
+            %a
+              = article.title
+            %p{:class => "story"}!= article.introduction
     - empties = (count % 3) + 1
     - unless empties == 1
       - empties.times do
