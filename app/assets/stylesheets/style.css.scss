@@ -3,17 +3,38 @@
 
 @import "grids";
 
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: #333;
+    text-decoration: none;
+    font-weight: normal;
+}
+
 hr {
     border: 0;
     height: 0;
     border-bottom: 1px solid #eeeeee;
 }
 
+/* ------- Header ------- */
+
+
+
+
+
+
+/* ------ content ------- */
+
 .article-cell {
-	@include span(3 of 9);
+  @include span(3 of 9);
   border-right: 1px solid #ebebeb;
   border-top: 1px solid #ebebeb;
   height: 25em;
+  position: relative;
   overflow: hidden;
   &:nth-child(3n) {
     @include last;
@@ -26,10 +47,17 @@ hr {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    max-width: 100%; /* ie6 does not support this see RWD book */
+    max-width: 100%;
     height: auto; /* so images with a height attribute don’t scale in one dimension */
   }
+  & p {
+    font-size: 0.929em;
+  }
 }
+
+lt-ie7 .article-cell img {
+    width: 100%; /* ie6 does not scale small imgs well */
+  }
 
 .category-title {
   background-color: #eeeeee;
@@ -37,6 +65,8 @@ hr {
   border: #333;
   width: auto;
 }
+
+/* ---- content navigation ----- */
 
 .content-navigation ul {
     padding: 0;
@@ -72,12 +102,85 @@ nav.content-navigation {
     top: 0;
 }
 
-a,
-a:link,
-a:visited,
-a:hover,
-a:active {
-    color: #333;
-    text-decoration: none;
-    font-weight: normal;
+/* Footer Section */
+
+.footer {
+  border-top: 1px solid #eeeeee;
+  margin-top: 28px;
+  padding: 28px 0;
 }
+
+.social {
+  float: left;
+  margin-left: 30em;
+}
+.social .copyright {
+  color: #ccc;
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+.social li {
+  display: inline;
+}
+
+.social li a {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.social-dribbble a, 
+.social-facebook a,
+.social-twitter a {
+  background-image: url('social.png'); 
+  background-repeat: no-repeat; 
+}
+
+.social-dribbble a {
+  background-position: 0px -58px;
+} 
+.social-facebook a { 
+  background-position: 0px -174px; 
+}  
+.social-twitter a { 
+  background-position: 0px -290px; 
+}
+
+.social-dribbble a:hover { 
+  background-position: 0px 0;  
+}
+.social-facebook a:hover { 
+  background-position: 0px -116px; 
+}
+.social-twitter a:hover { 
+  background-position: 0px -232px; 
+}
+
+.contact {
+  float: right;
+}
+.contact, .contact a {
+  color: #ccc;
+}
+.contact ul li:before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-image: url('contact.png');
+  margin-right: 0.1em;
+}
+.contact-name:before {
+  background-position: 0 -29px; 
+}
+.contact-phone:before {
+  background-position: 0 -63px; 
+} 
+.contact-email:before{ 
+  background-position: 0 5px;
+}
+
+/*-------------------------*/

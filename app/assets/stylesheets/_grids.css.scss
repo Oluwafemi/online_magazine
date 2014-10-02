@@ -4,6 +4,8 @@
 //@import "compass/typography/vertical_rhythm";
 @import "mixins";
 
+@include border-box-sizing;
+
 $susy: (
   //debug: (image: show),
   global-box-sizing: border-box,
@@ -13,11 +15,6 @@ $susy: (
   gutter-position: inside,
 );
 
-@include border-box-sizing;
-
-$M: 47em; // roughly speaking, around 750px wide with 16px body font  em is body font size
-$L: 75em; // roughly speaking, around 1200px wide with 16px body font
-
 //$base-font-size: 16px;
 //$base-line-height: 24px;
 
@@ -25,7 +22,7 @@ $L: 75em; // roughly speaking, around 1200px wide with 16px body font
 
 .container {
   @include container;
-  @include clearfix;
+  @include clearfix;  /* susy uses the Easy Clearing Method */
 }
 
 .content-navigation {

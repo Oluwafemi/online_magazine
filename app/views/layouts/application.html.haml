@@ -20,20 +20,32 @@
           %li.content-link
             %a{:href => "#"} 
               = article_category.name
-      %header
+      %header.main-content
+        / .logo
+        /  %h1
+        / Seed International Magazine
       %hr.content-rule
         .main-content
           = yield
-    %footer.container
-      %br
-      %hr
-      %ul.footnote-links-wrapper
-        %li.footnote-link
-          %a{:href => "#"} Terms & Conditions
-        %li.footnote-link
-          %a{:href => "#"} Contact Us
-        %li.footnote-link
-          %a{:href => "#"} Copyright #{Date.today.year}
-
+    %footer{:class => "footer container clearfix" }
+      .contact
+        %ul
+          %li.contact-name
+            Oluwafemi Adenubi
+          %li.contact-phone
+            (+234) 80-750-363-79
+          %li.contact-email
+            contextfree9@gmail.com
+      .social
+        %small.copyright
+          Copyright Seed International Magazine #{Date.today.year}
+        %ul
+          %li.social-dribble
+            %a{:href => "#"} Dribble
+          %li.social-facebook
+            %a{:href => "#"} Facebook
+          %li.social-twitter
+            %a{:href => "#"} Twitter
+            
 / The HTML markup should describe the content. It should be clean, semantic, and free from presentational naming or order.
 / before body /[if lt IE 9] already included by modenzr %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
