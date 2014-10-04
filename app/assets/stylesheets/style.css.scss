@@ -1,5 +1,30 @@
-// Screen
-// ======
+/*-----------------------------------------------
+[Master sheet]
+   Project:
+   URL:
+   Version:
+   Creator:
+   Last changed:  01/02/12
+   Last Updated:  Oluwafemi Adenubi
+   Primary use:   Seed International Magazine
+   -------------------------------------------------*/
+
+/*-----------------------------------------------
+   Table of contents
+   1. Normalize
+   2. Variables
+   3. Typography
+   4. Basic layout
+   5. Widgets
+   6. Media items
+   7. Forms
+   8. Media queries
+   9. IE specific styles
+   -------------------------------------------------*/
+
+/*-----------------------------------------------
+   £Normalize
+   -------------------------------------------------*/
 
 @import "grids";
 
@@ -40,8 +65,14 @@ hr {
     @include last;
     border-right: 0;
   }
-  &:nth-child(-n+4) {
+  &:nth-child(-n+3) {
     border-top: 0;
+  }
+  & > h3 {
+    background-color: #eeeeee;
+    padding: 0.25em;
+    border: #333;
+    width: auto;
   }
   & img {
     display: block;
@@ -58,13 +89,6 @@ hr {
 lt-ie7 .article-cell img {
     width: 100%; /* ie6 does not scale small imgs well */
   }
-
-.category-title {
-  background-color: #eeeeee;
-  padding: 0.25em;
-  border: #333;
-  width: auto;
-}
 
 /* ---- content navigation ----- */
 

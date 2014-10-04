@@ -1,20 +1,21 @@
 = provide(:title, "Home")
-.content
-  - count = 0
-  - @article_categories.each do |article_category|
-    - recent_articles = article_category.recent_articles
-    - unless recent_articles.empty?
-      - recent_articles.each do |article|
-        - count += 1
-        .article-cell
-          %h4{:class => "category-title"}
-            = article_category.name
+- count = 0
+- @article_categories.each do |article_category|
+  - recent_articles = article_category.recent_articles
+  - unless recent_articles.empty?
+    - recent_articles.each do |article|
+      - count += 1
+      %article.article-cell
+        %h3
+          = article_category.name
+        %p
           %a{:href => "#"}
-            = image_tag article.image.to_s, alt: article.title
-          %a{:href => "#"}
+            = image_tag article.image.to_s, alt: "Caption Photo For Article; #{article.title}"
+        %section
+          %h3
             = article.title
-          %p{:class => "story"}!= article.introduction
-  - empties = (count % 3) + 1
-  - unless empties == 1
-    - empties.times do
-      .article-cell
+          != article.introduction
+- empties = (count % 3) + 1
+- unless empties == 1
+  - empties.times do
+    .article-cell

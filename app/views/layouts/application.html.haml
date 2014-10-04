@@ -13,21 +13,22 @@
   = csrf_meta_tags
   %body
     .container
-      %nav.content-navigation
-        .navigation-header
+      %header{ :class => "main-content", :role => "banner" }
+        / Seed International Magazine
+        / logo
+      %nav{ :class => "content-navigation", :role => "navigation" }
+        %header.navigation-header
+          / h1-h6 heading
+          / and metadata
         %ul
         - @article_categories.each do |article_category|
           %li.content-link
             %a{:href => "#"} 
               = article_category.name
-      %header.main-content
-        / .logo
-        /  %h1
-        / Seed International Magazine
-      %hr.content-rule
-        .main-content
-          = yield
-    %footer{:class => "footer container clearfix" }
+      %hr.main-content
+      .main-content
+        = yield
+    %footer{:class => "footer container clearfix", :role => "contentinfo" }
       .contact
         %ul
           %li.contact-name
