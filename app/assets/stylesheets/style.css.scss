@@ -28,6 +28,17 @@
 
 @import "grids";
 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td {  
+  margin:0; 
+  padding:0; 
+}
+
+body { font-size: 100%; line-height: 1.5em; } 
+
+lt-ie8 body {
+  font-size: medium; 
+} 
+
 
 a,
 a:link,
@@ -69,7 +80,6 @@ hr {
     border-top: 0;
   }
   & > h3 {
-    background-color: #eeeeee;
     padding: 0.25em;
     border: #333;
     width: auto;
@@ -87,7 +97,7 @@ hr {
 }
 
 lt-ie7 .article-cell img {
-    width: 100%; /* ie6 does not scale small imgs well */
+    width: 100%; 
   }
 
 /* ---- content navigation ----- */
