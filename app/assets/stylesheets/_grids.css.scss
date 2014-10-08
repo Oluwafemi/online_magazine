@@ -15,11 +15,12 @@ $susy: (
   gutter-position: inside,
 );
 
-//$base-font-size: 16px;
-//$base-line-height: 24px;
+//$base-font-size: 100%;
+//$base-line-height: 1.5em;
 
 //@include establish-baseline;
 
+// WE NEED A max-width (and possibly min-width) to prevent horizontal scrolling at large text sizes
 .container {
   @include container;
   @include clearfix;  /* susy uses the Easy Clearing Method */

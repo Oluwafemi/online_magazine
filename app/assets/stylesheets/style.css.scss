@@ -33,7 +33,10 @@ body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,t
   padding:0; 
 }
 
-body { font-size: 100%; line-height: 1.5em; } 
+body { 
+  font-size: 100%; 
+  line-height: 1.5em; 
+} 
 
 lt-ie8 body {
   font-size: medium; 
@@ -67,6 +70,7 @@ hr {
 
 .article-cell {
   @include span(3 of 9);
+  min-width: 20em;
   border-right: 1px solid #ebebeb;
   border-top: 1px solid #ebebeb;
   height: 25em;
