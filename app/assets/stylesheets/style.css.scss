@@ -26,14 +26,14 @@
    £Normalize
    -------------------------------------------------*/
 
-@import "grids";
-
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,p,blockquote,th,td {  
   margin:0; 
   padding:0; 
 }
 
-body { 
+body {
+  width: 95%;
+  margin: 3em auto;
   font-size: 100%; 
   line-height: 1.5em; 
 } 
@@ -61,49 +61,202 @@ hr {
 
 /* ------- Header ------- */
 
+.header {
+  padding: 1.5em;
+}
 
+@font-face {
+  font-family: 'icomoon';
+  src:url('fonts/icomoon.eot');
+  src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+    url('icomoon.woff') format('woff'),
+    url('icomoon.ttf') format('truetype'),
+    url('icomoon.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+.icon-user:before {
+  content: "\e602";
+}
+.icon-users:before {
+  content: "\e603";
+}
+.icon-list:before {
+  content: "\e600";
+}
+.icon-list2:before {
+  content: "\e601";
+}
+.icon-googleplus:before {
+  content: "\e604";
+}
+.icon-googleplus2:before {
+  content: "\e605";
+}
+.icon-facebook:before {
+  content: "\e606";
+}
+.icon-twitter:before {
+  content: "\e607";
+}
+.icon-feed:before {
+  content: "\e608";
+}
+.icon-feed2:before {
+  content: "\e609";
+}
+.icon-vimeo2:before {
+  content: "\e60a";
+}
+.icon-vimeo:before {
+  content: "\e60b";
+}
+.icon-github:before {
+  content: "\e60c";
+}
+.icon-github2:before {
+  content: "\e60d";
+}
+.icon-blogger:before {
+  content: "\e60e";
+}
+.icon-apple:before {
+  content: "\e60f";
+}
+.icon-android:before {
+  content: "\e610";
+}
+.icon-linkedin:before {
+  content: "\e611";
+}
+.icon-pinterest:before {
+  content: "\e612";
+}
+.icon-pinterest2:before {
+  content: "\e613";
+}
+.icon-phone:before {
+  content: "\e614";
+}
+.icon-user2:before {
+  content: "\e615";
+}
+.icon-users2:before {
+  content: "\e616";
+}
+.icon-user-add:before {
+  content: "\e617";
+}
+.icon-search:before {
+  content: "\e618";
+}
+.icon-tools:before {
+  content: "\e619";
+}
+.icon-camera:before {
+  content: "\e61a";
+}
+.icon-lock:before {
+  content: "\e61b";
+}
+.icon-lock-open:before {
+  content: "\e61c";
+}
+.icon-logout:before {
+  content: "\e61d";
+}
+.icon-login:before {
+  content: "\e61e";
+}
+.icon-list3:before {
+  content: "\e61f";
+}
+.icon-add-to-list:before {
+  content: "\e620";
+}
+.icon-list4:before {
+  content: "\e621";
+}
+.icon-ellipsis:before {
+  content: "\e622";
+}
+
+.menu-button {
+  display: inline-block;
+}
+
+.icon-list4 {
+  font-size: 2em;
+}
 
 /* ------ content ------- */
 
+.main-content {
+  overflow: hidden;
+}
+
 .article-cell {
-  @include span(3 of 9);
   border-right: 1px solid #ebebeb;
   border-top: 1px solid #ebebeb;
-  height: 25em;
-  position: relative;
-  overflow: hidden;
+  width: 20em;
+  height: 20em;
+  float: left;
+  & > h3 {
+    padding: 0.25em;
+    border: #333;
+    width: auto;
+  }
+  & .section {
+    display: block;
+    padding: 2.5%;
+  }
+  & img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 95%;
+    max-height: 50%;
+    height: auto; /* so images with a height attribute don’t scale in one dimension */
+  }
+  & .section {
+    height: 6em;
+  }
+  /*& p {
+    font-size: 0.929em;
+  }
   &:nth-child(3n) {
     @include last;
     border-right: 0;
   }
   &:nth-child(-n+3) {
     border-top: 0;
-  }
-  & > h3 {
-    padding: 0.25em;
-    border: #333;
-    width: auto;
-  }
-  & img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%;
-    height: auto; /* so images with a height attribute don’t scale in one dimension */
-  }
-  & p {
-    font-size: 0.929em;
-  }
+  }*/
 }
 
 lt-ie7 .article-cell img {
-    width: 100%; 
+    width: 95%; 
   }
 
 /* ---- content navigation ----- */
+
+.content-navigation {
+  display: none;
+}
 
 .content-navigation ul {
     padding: 0;
@@ -116,7 +269,7 @@ li {
 }
 
 .content-navigation li {
-    float: left;
+    //float: left;
     margin: 1em;
     margin-top: 0;
     padding: 5%;
@@ -134,18 +287,18 @@ li {
 nav.content-navigation {
     border-right: 1px solid #ebebeb;
     height: 100%;
-    position:fixed;
+    //position:fixed;
     left: 0;
     top: 0;
 }
 
 /* Footer Section */
 
-.footer {
+/*.footer {
   border-top: 1px solid #eeeeee;
   margin-top: 28px;
   padding: 28px 0;
-}
+}*/
 
 .social {
   float: left;

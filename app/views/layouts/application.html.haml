@@ -14,9 +14,11 @@
   = csrf_meta_tags
   %body
     .container
-      %header{ :class => "main-content", :role => "banner" }
+      %header{ :class => "header main-content", :role => "banner" }
         / Seed International Magazine
-        / logo
+        / logo "&#xe014;".html_safe } :data => { , "aria-hidden" => "true" :icon => "&#xe610;".html_safe } }
+        %a.menu-button
+          %span{ :class => "icon-list4" }
       %nav{ :class => "content-navigation", :role => "navigation" }
         %header.navigation-header
           / h1-h6 heading
@@ -26,7 +28,7 @@
           %li.content-link
             %a{:href => "#"} 
               = article_category.name
-      %hr.main-content
+      / %hr.main-content
       .main-content
         = yield
     %footer{:class => "footer container clearfix", :role => "contentinfo" }
