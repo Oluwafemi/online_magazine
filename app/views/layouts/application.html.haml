@@ -10,15 +10,19 @@
   %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
   %title Online Magazine | #{yield(:title)}
   = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-  = javascript_include_tag "application", "data-turbolinks-track" => true
+  = stylesheet_link_tag "application", media: "all", href: "http://fonts.googleapis.com/css?family=Vollkorn"
   = csrf_meta_tags
   %body
     .container
       %header{ :class => "header main-content", :role => "banner" }
-        / Seed International Magazine
-        / logo "&#xe014;".html_safe } :data => { , "aria-hidden" => "true" :icon => "&#xe610;".html_safe } }
         %a.menu-button
           %span{ :class => "icon-list4" }
+        %h3
+          Seed International Magazine
+        %p
+          Clearly on The Cutting-Edge Side of Business Innovation 
+        / logo "&#xe014;".html_safe } :data => { , "aria-hidden" => "true" :icon => "&#xe610;".html_safe } }
+      %hr
       %nav{ :class => "content-navigation", :role => "navigation" }
         %header.navigation-header
           / h1-h6 heading
@@ -31,25 +35,33 @@
       / %hr.main-content
       .main-content
         = yield
+    %hr
     %footer{:class => "footer container clearfix", :role => "contentinfo" }
       .contact
-        %ul
-          %li.contact-name
-            Oluwafemi Adenubi
-          %li.contact-phone
-            (+234) 80-750-363-79
-          %li.contact-email
-            contextfree9@gmail.com
-      .social
-        %small.copyright
-          Copyright Seed International Magazine #{Date.today.year}
-        %ul
-          %li.social-dribble
-            %a{:href => "#"} Dribble
-          %li.social-facebook
+        %ul.mail-contact
+          %li
+            Contact us
+          %li
+            %a{:href => "#"}
+              Email us
+        %ul.social-contact
+          %li
+            Social
+          %li.icon-facebook
             %a{:href => "#"} Facebook
-          %li.social-twitter
+          %li.icon-twitter2
             %a{:href => "#"} Twitter
+          %li.icon-googleplus2
+            %a{:href => "#"} Google+
+          %li.icon-play
+            %a{:href => "#"} YouTube
+          %li.icon-vimeo2
+            %a{:href => "#"} Vimeo
+          %li.icon-linkedin
+            %a{:href => "#"} LinkedIn
+      .copyright
+        #{Date.today.year} Seed International Magazine
+  = javascript_include_tag "application", "data-turbolinks-track" => true
             
 / The HTML markup should describe the content. It should be clean, semantic, and free from presentational naming or order.
 / before body /[if lt IE 9] already included by modenzr %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}

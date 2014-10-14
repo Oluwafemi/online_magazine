@@ -17,3 +17,30 @@
 //= require_tree ./ckeditor
 //= require turbolinks
 //= require_tree .
+
+function imgUpdate(arg) {
+    var loaded = false;
+    var src = arg.src;
+
+    $(arg).on("load", function() {
+        loaded = true;
+        $(".spinner").hide();
+    });
+
+    setTimeout(function(){
+        if (!loaded) {
+            $(".spinner").show();
+        }
+    }, 250);
+
+    arg.src = "";
+    arg.src = src;
+}
+
+/*$(document).ready(function() {
+		var target = $('.aws-image');
+		target.each(function(i) {
+		imgUpdate(target[i]);
+		//var spinner = new Spinner(opts).spin(target[i]);
+	});
+});*/

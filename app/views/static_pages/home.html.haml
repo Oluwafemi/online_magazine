@@ -8,8 +8,9 @@
           = article_category.name
         %p
           %a{:href => "#"}
-            = image_tag article.image.to_s, alt: "Caption Photo For Article; #{article.title}"
+            = image_tag article.image.to_s, class: "aws-image", alt: "Caption Photo For Article; #{article.title}"
         %section.section
           %h3
-            = article.title
+            %a{:href => "#"}
+              = article.title
           != article.introduction
