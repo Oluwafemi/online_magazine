@@ -17,21 +17,31 @@
       %header{ :class => "header main-content", :role => "banner" }
         %a.menu-button
           %span{ :class => "icon-list4" }
+        %nav{ :class => "content-navigation", :role => "navigation" }
+          %header.navigation-header
+            / h1-h6 heading
+            / and metadata
+          %ul
+          - @article_categories.each do |article_category|
+            %li.content-link
+              %a{:href => "#"} 
+                = article_category.name
+        / %hr.main-content
         %h3
           Seed International Magazine
         %p
           Clearly on The Cutting-Edge Side of Business Innovation 
         / logo "&#xe014;".html_safe } :data => { , "aria-hidden" => "true" :icon => "&#xe610;".html_safe } }
       %hr
-      %nav{ :class => "content-navigation", :role => "navigation" }
-        %header.navigation-header
-          / h1-h6 heading
-          / and metadata
-        %ul
-        - @article_categories.each do |article_category|
-          %li.content-link
-            %a{:href => "#"} 
-              = article_category.name
+      / %nav{ :class => "content-navigation", :role => "navigation" }
+      /  %header.navigation-header
+      /    / h1-h6 heading
+      /    / and metadata
+      /  %ul
+      /  - @article_categories.each do |article_category|
+      /    %li.content-link
+      /      %a{:href => "#"} 
+      /        = article_category.name
       / %hr.main-content
       .main-content
         = yield
@@ -41,9 +51,8 @@
         %ul.mail-contact
           %li
             Contact us
-          %li
-            %a{:href => "#"}
-              Email us
+          %li.icon-mail
+            %a{:href => "#"} Email us
         %ul.social-contact
           %li
             Social

@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:url('fonts/icomoon.eot');
-  src:url('fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+  src:url('icomoon.eot');
+  src:url('icomoon.eot?#iefix') format('embedded-opentype'),
     url('icomoon.woff') format('woff'),
     url('icomoon.ttf') format('truetype'),
     url('icomoon.svg') format('svg');
@@ -22,7 +22,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 .icon-home:before {
   content: "\e623";
 }
@@ -43,6 +42,12 @@
 }
 .icon-list2:before {
   content: "\e601";
+}
+.icon-mail:before {
+  content: "\e632";
+}
+.icon-mail2:before {
+  content: "\e633";
 }
 .icon-googleplus:before {
   content: "\e604";
@@ -125,6 +130,9 @@
 .icon-pinterest2:before {
   content: "\e613";
 }
+.icon-xing:before {
+  content: "\e631";
+}
 .icon-phone:before {
   content: "\e614";
 }
@@ -166,7 +174,6 @@
 }
 .icon-list4:before {
   content: "\e621";
-  font-size: 2em;
 }
 .icon-ellipsis:before {
   content: "\e622";

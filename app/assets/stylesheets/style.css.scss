@@ -60,6 +60,10 @@ body {
   margin: 1.5em auto;
 } 
 
+li {
+  list-style-type: none;
+}
+
 a,
 a:link,
 a:visited,
@@ -94,6 +98,18 @@ hr {
 .menu-button {
   display: block;
   float: left;
+  border: 0.0625em solid #eeeeee;
+  border-radius: 0.3125em; /* 5px / 16px */
+}
+
+.icon-list4:before {
+  display: block;
+  font-size: 2em;
+  line-height: 1.0em;
+}
+
+.menu-button:hover + .content-navigation {
+  display: block;
 }
 
 /* ------ main content ------- */
@@ -103,27 +119,6 @@ hr {
   margin: 1.5em 0; /* 24px */
 }
 
-/*.spinner {
-    background-position: center center;
-    background-repeat: no-repeat;
-    border-radius: 50%; // Rounds out the halo 
-    opacity: .7; // Some subtle opacity to help blend with variable background colors 
-}
-.spinner {
-    height: 24px; width: 24px; /* Pixel size of the GIF you download 
-    background: url("gif.gif");
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
-.spinner.medium {
-    height: 32px; width: 32px;
-    background: url("spiffygif_32x32.gif");
-}
-.spinner.large {
-    height: 64px; width: 64px;
-    background: url("spiffygif_64x64.gif");
-}*/
 .article-cell {  /* 1em = 16px; margin & padding = 0, depends on dimensions for vertical-rythm */
   display: block;
   float: left;
@@ -161,21 +156,11 @@ hr {
     line-height: 1.6666666666666665em; /* 24px / 14.4px */
     height: 10em; /* 6 * line-height / 14.4px */
   }
-  /*& p {
-    font-size: 0.929em;
-  }
-  &:nth-child(3n) {
-    @include last;
-    border-right: 0;
-  }
-  &:nth-child(-n+3) {
-    border-top: 0;
-  }*/
 }
 
 lt-ie7 .article-cell img {
-    width: 95%; 
-  }
+  width: 95%; 
+}
 
 /* ---- content navigation ----- */
 
@@ -183,14 +168,12 @@ lt-ie7 .article-cell img {
   display: none;
 }
 
-.content-navigation ul {
-    padding: 0;
-    margin: 0;
-    margin-top: 2em;
+.content-navigation:hover {
+  display: block;
 }
 
-li {
-  list-style-type: none;
+.content-navigation ul {
+    margin: 
 }
 
 .content-navigation li {
@@ -209,7 +192,7 @@ li {
     border-bottom: 0;
 }
 
-nav.content-navigation {
+.content-navigation {
     border-right: 1px solid #ebebeb;
     height: 100%;
     //position:fixed;
@@ -222,6 +205,7 @@ nav.content-navigation {
 .footer {
   font-size: 0.9em; /* 14.4px */
   line-height: 1.6666666666666665em; /* 24px / 14.4px */
+  margin: 1.5em 0; 
 }
 
 .copyright {
@@ -233,86 +217,64 @@ nav.content-navigation {
 }
 .contact {
   float: right;
+  & li {
+    color: #ccc;
+    padding-top: 0.5972222222222222em; /* 8.6px / 14.4px */
+  }
+  & a {
+    color: #ccc;
+  }
+  & li:hover, & a:hover {
+    color: black;
+  }
 }
 
 .contact .mail-contact {
   & li:first-child {
-    border-bottom: 0.06944444444444445em solid #ebebeb;  /* 1px / 14.4px */
-    margin-left: 0;
+    color: black;
+    border-bottom: 0.06944444444444445em solid black;
   }
 }
 
 .contact .social-contact {
+  padding-bottom: 0.5972222222222222em; /* 8.6px / 14.4px */
   & li:first-child {
-    border-bottom: 0.06944444444444445em solid #ebebeb;  /* 1px / 14.4px */
-    margin-left: 0;
+    //padding: 0 0 0.5972222222222222em;
+    color: black;
+    border-bottom: 0.06944444444444445em solid black;
   }
 }
 
-/*.social {
-  float: left;
-  margin-left: 30em;
+/*
+/*& p {
+    font-size: 0.929em;
+  }
+  &:nth-child(3n) {
+    @include last;
+    border-right: 0;
+  }
+  &:nth-child(-n+3) {
+    border-top: 0;
+  }*/.spinner {
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 50%; // Rounds out the halo 
+    opacity: .7; // Some subtle opacity to help blend with variable background colors 
 }
-.social li {
-  display: inline;
+.spinner {
+    height: 24px; width: 24px; /* Pixel size of the GIF you download 
+    background: url("gif.gif");
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
-
-.social li a {
-  display: inline-block;
-  width: 48px;
-  height: 48px;
-  text-indent: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+.spinner.medium {
+    height: 32px; width: 32px;
+    background: url("spiffygif_32x32.gif");
 }
-
-.social-dribbble a, 
-.social-facebook a,
-.social-twitter a {
-  background-image: url('social.png'); 
-  background-repeat: no-repeat; 
-}
-
-.social-dribbble a {
-  background-position: 0px -58px;
-} 
-.social-facebook a { 
-  background-position: 0px -174px; 
-}  
-.social-twitter a { 
-  background-position: 0px -290px; 
-}
-
-.social-dribbble a:hover { 
-  background-position: 0px 0;  
-}
-.social-facebook a:hover { 
-  background-position: 0px -116px; 
-}
-.social-twitter a:hover { 
-  background-position: 0px -232px; 
-}
-
-
-.contact, .contact a {
-  color: #ccc;
-}
-.contact ul li:before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background-image: url('contact.png');
-  margin-right: 0.1em;
-}
-.contact-name:before {
-  background-position: 0 -29px; 
-}
-.contact-phone:before {
-  background-position: 0 -63px; 
-} 
-.contact-email:before{ 
-  background-position: 0 5px;
-}
+.spinner.large {
+    height: 64px; width: 64px;
+    background: url("spiffygif_64x64.gif");
+}*/
 
 /*-------------------------*/
