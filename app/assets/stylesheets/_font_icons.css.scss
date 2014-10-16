@@ -22,6 +22,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .icon-home:before {
   content: "\e623";
 }
@@ -165,6 +166,12 @@
 }
 .icon-login:before {
   content: "\e61e";
+}
+.icon-minus:before {
+  content: "\e634";
+}
+.icon-plus:before {
+  content: "\e635";
 }
 .icon-list3:before {
   content: "\e61f";

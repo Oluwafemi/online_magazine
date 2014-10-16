@@ -84,6 +84,7 @@ hr {
 /* ------- Header ------- */
 
 .header {
+  position: relative;
   font-family: 'Vollkorn', sans-serif;
   text-align: center;
   & h3 {
@@ -98,19 +99,108 @@ hr {
 .menu-button {
   display: block;
   float: left;
-  border: 0.0625em solid #eeeeee;
+  border: 0.0625em solid #eeeeee; /* 1px/ 16px */
   border-radius: 0.3125em; /* 5px / 16px */
 }
 
 .icon-list4:before {
   display: block;
-  font-size: 2em;
-  line-height: 1.0em;
+  font-size: 2em;  /* 32px */
+  line-height: 1.0em;  /* 32px */
+}
+
+%show-navigation {
+  display: block;
+  position: fixed;
+  top: 3.5em; /* 32px */
+  left: auto;
+  & li {
+  }
 }
 
 .menu-button:hover + .content-navigation {
-  display: block;
+  @extend %show-navigation;
 }
+
+.content-navigation {
+  @extend %show-navigation;
+  display: none;
+}
+
+.content-navigation:hover {
+  @extend %show-navigation;
+}
+
+.content-navigation li a 
+{
+    display: block;
+    text-decoration: none;
+    text-align: left;
+    color: #ffffff;
+    font-size: 1.5em; /* 24px */
+    padding: 0.5em 1em;
+    border-top: 0.041666666666666664em solid #ffffff; /* 1px / 24px */
+    background: #2C5463;
+    margin-left: 1px;
+    white-space: nowrap;
+    &:before {
+      content: "+";
+    }
+}
+
+/*ul li a:hover 
+{
+    background: #617F8A;
+}
+li:hover ul 
+{
+    display: block;
+    position: absolute;
+}
+
+li:hover li
+{
+    float: none;
+    font-size: 11px;
+}
+
+li:hover a 
+{
+    background: #617F8A;
+}
+
+li:hover li a:hover 
+{
+    background: #95A9B1;
+}*/
+
+/* ---- content navigation ----- */
+
+/*.content-navigation li {
+    display: block;
+    position: relative;
+    float: left;
+    /*margin: 1em;
+    margin-top: 0;
+    padding: 5%;
+    padding-top: 0;
+    width: 80%;
+    border-bottom: 1px solid #ebebeb;
+    //for selected border-bottom: 1px solid #333;
+    //margin-right: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px;
+}*/
+
+/*.content-navigation li:last-child {
+    border-bottom: 0;
+}
+
+.content-navigation {
+    border-right: 1px solid #ebebeb;
+    height: 100%;
+    //position:fixed;
+    left: 0;
+    top: 0;
+}*/
 
 /* ------ main content ------- */
 
@@ -135,9 +225,6 @@ hr {
     color: white;
     background-color: lightgrey;
   }
-  & > p {
-    position: relative;
-  }
   & .section {
     display: block;
     padding: 1.5%;
@@ -159,45 +246,7 @@ hr {
 }
 
 lt-ie7 .article-cell img {
-  width: 95%; 
-}
-
-/* ---- content navigation ----- */
-
-.content-navigation {
-  display: none;
-}
-
-.content-navigation:hover {
-  display: block;
-}
-
-.content-navigation ul {
-    margin: 
-}
-
-.content-navigation li {
-    //float: left;
-    margin: 1em;
-    margin-top: 0;
-    padding: 5%;
-    padding-top: 0;
-    width: 80%;
-    border-bottom: 1px solid #ebebeb;
-    //for selected border-bottom: 1px solid #333;
-    //margin-right: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px;
-}
-
-.content-navigation li:last-child {
-    border-bottom: 0;
-}
-
-.content-navigation {
-    border-right: 1px solid #ebebeb;
-    height: 100%;
-    //position:fixed;
-    left: 0;
-    top: 0;
+  width: 97%; 
 }
 
 /* Footer Section */
@@ -225,14 +274,14 @@ lt-ie7 .article-cell img {
     color: #ccc;
   }
   & li:hover, & a:hover {
-    color: black;
+    color: #333;
   }
 }
 
 .contact .mail-contact {
   & li:first-child {
-    color: black;
-    border-bottom: 0.06944444444444445em solid black;
+    color: #333;
+    border-bottom: 0.06944444444444445em solid #333;
   }
 }
 
@@ -240,12 +289,11 @@ lt-ie7 .article-cell img {
   padding-bottom: 0.5972222222222222em; /* 8.6px / 14.4px */
   & li:first-child {
     //padding: 0 0 0.5972222222222222em;
-    color: black;
-    border-bottom: 0.06944444444444445em solid black;
+    color: #333;
+    border-bottom: 0.06944444444444445em solid #333;
   }
 }
 
-/*
 /*& p {
     font-size: 0.929em;
   }
@@ -255,7 +303,8 @@ lt-ie7 .article-cell img {
   }
   &:nth-child(-n+3) {
     border-top: 0;
-  }*/.spinner {
+  }
+.spinner {
     background-position: center center;
     background-repeat: no-repeat;
     border-radius: 50%; // Rounds out the halo 
