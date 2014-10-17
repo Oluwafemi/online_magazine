@@ -40,10 +40,19 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
   margin:0; 
   padding:0; 
 }
+/*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite, code, del, dfn, font, img, kbd,
+q, s, samp, small, strike, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0; padding: 0; border: 0; outline: 0; vertical-align: baseline 
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+}*/
 
 body {
   font-size: 100%; 
-  line-height: 1.5em; /* 24px */
+  line-height: 1.5em; /* 24px 'Lato'*/
 } 
 
 lt-ie8 body {
@@ -114,6 +123,8 @@ hr {
   position: fixed;
   top: 3.5em; /* 32px */
   left: auto;
+  border-radius: 0.3125em; /* 5px / 16px */
+  background-color: grey;
   & li {
   }
 }
@@ -140,7 +151,6 @@ hr {
     font-size: 1.5em; /* 24px */
     padding: 0.5em 1em;
     border-top: 0.041666666666666664em solid #ffffff; /* 1px / 24px */
-    background: #2C5463;
     margin-left: 1px;
     white-space: nowrap;
     &:before {

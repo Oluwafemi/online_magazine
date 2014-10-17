@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401141340) do
+ActiveRecord::Schema.define(version: 20141017045319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,15 @@ ActiveRecord::Schema.define(version: 20140401141340) do
     t.datetime "updated_at"
   end
 
+  create_table "article_sub_categories", force: true do |t|
+    t.string   "title"
+    t.integer  "article_category_id",                   null: false
+    t.boolean  "allow_readers_comment", default: false, null: false
+    t.boolean  "active",                default: true,  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "articles", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -95,6 +104,8 @@ ActiveRecord::Schema.define(version: 20140401141340) do
   end
 
   add_index "user_article_categories", ["admin_user_id", "article_category_id"], name: "usr_article_cat", unique: true, using: :btree
+
+  add_foreign_key "article_sub_categories", "article_categories", name: "article_sub_categories_article_category_id_fk"
 
   add_foreign_key "articles", "user_article_categories", name: "articles_user_article_category_id_fk"
 
