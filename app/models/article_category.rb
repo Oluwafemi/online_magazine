@@ -5,7 +5,11 @@ class ArticleCategory < ActiveRecord::Base
   has_many :articles, :through => :user_article_categories
 
   accepts_nested_attributes_for :user_article_categories, :allow_destroy => true
-  validates :name, :presence => true
+
+  before_validation :normalize_name, on: [:create, :update]
+ 
+  validates :name, presence: true, uniqueness: true, length: { :in => 1..18 }
+  # { scope: :year, message: "should happen once per year", case_sensitive: false}
   
   def self.active_article_categories
     where('active = TRUE')
@@ -15,11 +19,20 @@ class ArticleCategory < ActiveRecord::Base
     active
   end
 
-  def permitted_params
-  	params.require(:article_category).permit(:name, :allow_readers_comment, :active)
-  end
-
   def recent_articles
   	articles.order_by_updated_at.limit(20)
   end
+
+  protected
+    def normalize_name
+      #self.name = self.name.downcase.titleize
+      self.name = self.name.upcase
+    end
+
+  private
+
+    def permitted_params
+      params.require(:article_category).permit(:name, :allow_readers_comment, :active)
+    end
+
 end

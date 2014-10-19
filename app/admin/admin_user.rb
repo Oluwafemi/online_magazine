@@ -38,6 +38,11 @@ ActiveAdmin.register AdminUser do
         redirect_to :action => :new
       end
     end
+
+    def destroy
+      #
+      super
+    end
     
     def update
       admin = AdminUser.find(params[:id])

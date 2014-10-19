@@ -1,16 +1,23 @@
 ActiveAdmin.register ArticleCategory do
   actions :all, :except => [:destroy]
+  permit_params :name, :allow_readers_comment, :active
   
   controller do
-    def permitted_params
-      params.permit article_category: [:name, :allow_readers_comment, :active]
-    end
-
+    
     def action_methods
       if current_admin_user.superuser
         super
       end
     end
+
+    #def create
+    #  @article_category = ArticleCategory.new(permitted_params[:article_category])
+    #  if @article_category.save
+    #    redirect_to admin_article_categories_path
+    #  else
+    #    render :new
+    #  end
+    #end    
 
   end
 
