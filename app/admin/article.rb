@@ -1,14 +1,11 @@
 ActiveAdmin.register Article do
-  actions :all, :except => [:destroy]
+  #actions :all, :except => [:destroy]
   scope_to :current_admin_user, :association_method => :current_articles
   form :partial => "form"
+  permit_params :title, :user_article_category_id, :introduction, :created_at, :updated_at, :image,
+        :image_cache, :img_url, :body, :reviewed
 
-  controller do
-    def permitted_params
-      params.permit article: [:title, :user_article_category_id, :introduction, :created_at, :updated_at, :image,
-        :image_cache, :img_url, :body, :reviewed]
-    end    
-  end
+  #controller do   end
 
   show :title => :title do |article|
     attributes_table do 
@@ -27,13 +24,13 @@ ActiveAdmin.register Article do
   index do
     column :title
     column "Article Category" do |article|
-      cat = article.user_article_category.article_category
-      link_to cat.name, '#'
+      article_category = article.user_article_category.article_category
+      link_to article_category.name, admin_article_category_path(article_category)
     end
     column :reviewed if current_admin_user.superuser
-    column "Creator" do |article|
-      admin = article.user_article_category.admin_user
-      link_to admin.email, '#' #admin_admin_user_path(admin)
+    column "Article Creator" do |article|
+      admin_user = article.user_article_category.admin_user
+      link_to admin_user.email, admin_admin_user_path(admin_user)
     end
     column :created_at
     column do |art|
@@ -43,7 +40,7 @@ ActiveAdmin.register Article do
         link_to("Edit", edit_admin_article_path(art)) + delete.try(:html_safe)
       else
         delete = link_to("View", admin_article_path(art)) + " | " + \
-        link_to("Edit", edit_admin_article_path(art)) + delete.try(:html_safe)
+        link_to("Edit", edit_admin_article_path(art))# + delete.try(:html_safe)
       end
     end
   end

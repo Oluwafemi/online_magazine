@@ -1,8 +1,9 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation
   actions :all, :except => [:destroy]
+  scope_to :current_admin_user, unless: proc{ current_admin_user.superuser? }
 
-  show :title => :current_title do
+  show :title => :current_title do |admin_user|
     attributes_table do
       row :email
       row :sign_in_count
@@ -11,8 +12,8 @@ ActiveAdmin.register AdminUser do
       row :created_at
       row :updated_at
       row :superuser
-      row 'Enabled Article Categories' do |n| #(&:name)
-        AdminUser.find(params[:id]).current_article_categories.map { |art| art.name }.join("<br /><br />").html_safe
+      row 'Enabled Article Categories' do |n| #(&:name)AdminUser.find(params[:id])
+        admin_user.current_article_categories.map { |article_category| "<a href='" + admin_article_category_path(article_category) + "'>" + article_category.name + "</a>" }.join("<br /><br />").html_safe
       end 
     end
     active_admin_comments
@@ -39,11 +40,6 @@ ActiveAdmin.register AdminUser do
       end
     end
 
-    def destroy
-      #
-      super
-    end
-    
     def update
       admin = AdminUser.find(params[:id])
       admin.email = params[:admin_user][:email]
@@ -85,7 +81,7 @@ ActiveAdmin.register AdminUser do
   
   end
   
-  menu :if => proc{ current_admin_user.superuser }
+  menu if: proc{ current_admin_user.superuser }
 
   index do
     column :email

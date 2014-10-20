@@ -69,6 +69,8 @@ ActiveRecord::Schema.define(version: 20141019061911) do
     t.datetime "updated_at"
   end
 
+  add_index "article_sub_categories", ["title", "article_category_id"], name: "article_article_sub_idx", unique: true, using: :btree
+
   create_table "articles", force: true do |t|
     t.string   "title"
     t.text     "body"

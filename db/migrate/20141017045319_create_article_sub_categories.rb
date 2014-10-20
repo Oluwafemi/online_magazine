@@ -9,5 +9,6 @@ class CreateArticleSubCategories < ActiveRecord::Migration
       t.timestamps
     end
     add_foreign_key(:article_sub_categories, :article_categories, dependent: :destroy)  #:nullify
+    add_index :article_sub_categories, [:title, :article_category_id], :unique => true, :name => 'article_article_sub_idx'
   end
 end

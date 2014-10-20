@@ -26,6 +26,12 @@
             %li.content-link
               %a{:href => "#"} 
                 = article_category.name
+              %ul
+                - article_category.current_sub_categories.each do |article_sub_category|
+                  %li{ :class => "content-sub-link", :href => "#" }
+                    %a{:href => "#"} 
+                      = article_sub_category.title
+
         / %hr.main-content
         %h3
           Seed International Magazine

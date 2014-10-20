@@ -3,8 +3,11 @@ class ArticleCategory < ActiveRecord::Base
   has_many :user_article_categories, :dependent => :destroy
   has_many :admin_users, :through => :user_article_categories
   has_many :articles, :through => :user_article_categories
+  has_many :article_sub_categories
 
   accepts_nested_attributes_for :user_article_categories, :allow_destroy => true
+
+  accepts_nested_attributes_for :article_sub_categories, :allow_destroy => true
 
   before_validation :normalize_name, on: [:create, :update]
  
@@ -21,6 +24,10 @@ class ArticleCategory < ActiveRecord::Base
 
   def recent_articles
   	articles.order_by_updated_at.limit(20)
+  end
+
+  def current_sub_categories
+    article_sub_categories.active_article_sub_categories
   end
 
   protected

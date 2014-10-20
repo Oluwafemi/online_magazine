@@ -16,7 +16,7 @@ ActiveAdmin.setup do |config|
 
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-      menu.add :label => "Sites" do |sites|
+      menu.add :label => "Social Hubs" do |sites|
         sites.add :label => "Google", :url => "http://google.com", :html_options => { :target => :blank }
         sites.add :label => "Facebook", :url => "http://facebook.com", :html_options => { :target => :blank }
         sites.add :label => "Pinterest", :url => "http://https://www.pinterest.com", :html_options => { :target => :blank }
