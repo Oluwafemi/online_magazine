@@ -29,12 +29,17 @@ ActiveAdmin.register AdminUser do
       end
     end
 
+    def change_sub_categories
+      @user_sub_categories = UserArticleCategory.current_sub_categories(params[:user_article_category_id]) #.try(:article_sub_categories)
+      render :text => view_context.options_from_collection_for_select(@user_sub_categories, :id, :title)
+    end
+
     def create
       admin = AdminUser.create(:first_name => params[:admin_user][:first_name], :last_name => params[:admin_user][:last_name], :email => params[:admin_user][:email], :superuser => params[:admin_user][:superuser])
       if admin.valid?
         cats = params[:admin_user][:article_category_ids] - [""]
         cats.each do |id|
-          UserArticleCategory.create(:admin_user_id => admin.id, :article_category_id => id.to_i, :enabled => true)
+          UserArticleCategory.create(:admin_user_id => admin.id, :article_category_id => id.to_i, :enabled => true)          
         end
         redirect_to :action => :index
       else

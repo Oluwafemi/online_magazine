@@ -8,6 +8,8 @@ class ArticleSubCategory < ActiveRecord::Base
     validates :article_category_id, presence: true
     
     before_validation :normalize_title, on: [:create, :update]
+
+    after_create :create_user_sub_categories
  
     def self.active_article_sub_categories
     	where('active = TRUE')
@@ -16,6 +18,12 @@ class ArticleSubCategory < ActiveRecord::Base
     def currently_active
     	active
 	  end
+
+    def create_user_sub_categories
+      article_category.user_article_category_ids.each do |user_category_id|
+      UserArticleSubCategory.create(:user_article_category_id => user_category_id, :article_sub_category_id => self.id)
+    end
+  end
 
     protected
     	def normalize_title

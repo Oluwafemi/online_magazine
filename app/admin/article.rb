@@ -12,11 +12,16 @@ ActiveAdmin.register Article do
       row :title
       row :article_category_name
       row :article_sub_category_name
-      row :introduction
+      row "Article Introduction" do
+        sanitize article.introduction
+      end
       row :created_at
       row :updated_at
       row :image do
         image_tag(article.image.to_s)
+      end
+      row "Article Body" do 
+        sanitize article.body
       end
     end
     active_admin_comments

@@ -10,6 +10,8 @@ OnlineMagazine::Application.routes.draw do
 
   get '/contact', :to => 'static_pages#contact'
 
+  post '/admin/articles/:article_id/change_sub_categories', :to => 'admin/admin_users#change_sub_categories'
+
   resources :article_categories do
     resources :article_sub_categories do
       resources :articles

@@ -8,13 +8,29 @@ class UserArticleCategory < ActiveRecord::Base
   delegate :name, :to => :article_category, :prefix => true
   
   validates :admin_user_id, :article_category_id, presence: true
+
+  after_create :create_user_sub_categories
   
   def permitted_params
   	params.require(:user_article_category).permit(:admin_user_id, :article_category_id, :enabled)
   end
 
+  def create_user_sub_categories
+    article_category.article_sub_category_ids.each do |sub_category_id|
+      UserArticleSubCategory.create(:user_article_category_id => self.id, :article_sub_category_id => sub_category_id)
+    end
+  end
+
   def to_s
     article_category.name
+  end
+
+  def creator
+    admin_user
+  end
+
+  def creator_name
+    admin_user.full_name
   end
 
   def self.user_current_article_categories
@@ -31,12 +47,8 @@ class UserArticleCategory < ActiveRecord::Base
     article_category.currently_active
   end
 
-  def creator
-    admin_user
-  end
-
-  def creator_name
-    admin_user.full_name
+  def self.current_sub_categories(instance_id)
+    find(instance_id).user_article_sub_categories
   end
 
 end

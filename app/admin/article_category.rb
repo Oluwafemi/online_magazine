@@ -50,10 +50,9 @@ ActiveAdmin.register ArticleCategory do
     column :allow_readers_comment
     column :active
     column do |article_catr|
-      delete = " | " + link_to("Delete", admin_article_category_path(article_catr), :method => :delete, :confirm => "Are you sure?") if article_catr.articles.empty?
-      
-    link_to("Details", admin_article_category_path(article_catr)) + " | " + \
-    link_to("Edit", edit_admin_article_category_path(article_catr))# + delete.try(:html_safe)
+      #delete = " | " + link_to("Delete", admin_article_category_path(article_catr), :method => :delete, :confirm => "Are you sure?") if article_catr.articles.empty?
+      link_to("Details", admin_article_category_path(article_catr)) + " | " + \
+      link_to("Edit", edit_admin_article_category_path(article_catr))# + delete.try(:html_safe)
     end
   end
 

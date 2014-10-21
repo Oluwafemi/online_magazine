@@ -22,12 +22,22 @@ class AdminUser < ActiveRecord::Base
     new_record? ? false : super
   end
 
+  # admin_user's article categories
+
   def current_article_categories
     user_article_categories.user_current_article_categories
   end
 
   def current_active_categories
     user_article_categories.user_current_active_categories
+  end
+
+  def current_article_sub_categories(user_article_category_id)
+    UserArticleCategory.current_sub_catgories(user_article_category_id)
+  end
+
+  def current_active_sub_categories(user_article_category_id)
+    UserArticleCategory.active_sub_catgories(user_article_category_id)
   end
 
   def current_articles

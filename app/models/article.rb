@@ -21,6 +21,14 @@ class Article < ActiveRecord::Base
     delegate :article_sub_category_name, :to => :user_article_sub_category
 
     mount_uploader :image, ImageUploader
+
+    def article_sub_category_name
+        if user_article_sub_category_id.nil?
+            ''
+        else
+            user_article_sub_category.sub_category_name
+        end
+    end
   
     def self.order_by_updated_at
         order('updated_at DESC')

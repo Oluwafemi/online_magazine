@@ -30,6 +30,10 @@ class ArticleCategory < ActiveRecord::Base
     article_sub_categories.active_article_sub_categories
   end
 
+  def self.sub_category_ids(instance_id)
+    find(instance_id).article_sub_category_ids
+  end
+
   protected
     def normalize_name
       #self.name = self.name.downcase.titleize
