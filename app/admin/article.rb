@@ -2,7 +2,7 @@ ActiveAdmin.register Article do
   #actions :all, :except => [:destroy]
   scope_to :current_admin_user, :association_method => :current_articles
   form :partial => "form"
-  permit_params :title, :user_article_category_id, :introduction, :created_at, :updated_at, :image,
+  permit_params :title, :user_article_category_id, :user_article_sub_category_id, :introduction, :created_at, :updated_at, :image,
         :image_cache, :img_url, :body, :reviewed
 
   #controller do   end
@@ -11,6 +11,7 @@ ActiveAdmin.register Article do
     attributes_table do 
       row :title
       row :article_category_name
+      row :article_sub_category_name
       row :introduction
       row :created_at
       row :updated_at
@@ -29,8 +30,8 @@ ActiveAdmin.register Article do
     end
     column :reviewed if current_admin_user.superuser
     column "Article Creator" do |article|
-      admin_user = article.user_article_category.admin_user
-      link_to admin_user.email, admin_admin_user_path(admin_user)
+      admin_user = 
+      link_to article.creator_name, admin_admin_user_path(article.creator)
     end
     column :created_at
     column do |art|

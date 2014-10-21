@@ -6,9 +6,15 @@
     = f.input :introduction, :label => "Article Preview", :hint => "Introductory content for article (200 characters max)", :as => :ckeditor, :input_html => { :ckeditor => { :height => 100, :toolbar => 'ToolsNoImage' } }
     - if f.object.persisted?
       = f.input :user_article_category, :label => "Select Article Category", :include_blank => false, 
-        :as => :select, :collection => current_admin_user.current_active_categories
+        :as => :select, :collection => current_admin_user.current_active_categories, :input_html => {
+        :onchange => remote_request(:post, :change_article_sub_categories, { :article_category_id => "$('#article_category_id').val()"}, :article_sub_categry_id) }
+      = f.input :article_sub_category
     - else
       = f.input :user_article_category, :label => "Select Article Category", 
           :include_blank => "choose article category", :as => :select, :collection => current_admin_user.current_active_categories
-    = f.input :body, :label => "Article Content", :as => :ckeditor, :input_html => { :ckeditor => { :height => 400, :toolbar => 'Full' } }
+      = f.input :article_sub_category
+    = f.input :body, :label => "Article Content", :hint => "Article content (500 words max)", :as => :ckeditor, :input_html => { :ckeditor => { :height => 400, :toolbar => 'Full' } }
+
   = f.actions :submit
+
+  -# :prompt => "Select an Author"

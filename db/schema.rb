@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141019061911) do
+ActiveRecord::Schema.define(version: 20141020210146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,12 @@ ActiveRecord::Schema.define(version: 20141019061911) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "superuser",              default: false, null: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["first_name", "last_name"], name: "admin_user_first_last_name_idx", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "article_categories", force: true do |t|
@@ -75,12 +78,13 @@ ActiveRecord::Schema.define(version: 20141019061911) do
     t.string   "title"
     t.text     "body"
     t.text     "img_url"
-    t.integer  "user_article_category_id",                 null: false
-    t.string   "introduction",             default: "",    null: false
+    t.integer  "user_article_category_id",                     null: false
+    t.string   "introduction",                 default: "",    null: false
     t.string   "image"
-    t.boolean  "reviewed",                 default: false
+    t.boolean  "reviewed",                     default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_article_sub_category_id"
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -109,11 +113,22 @@ ActiveRecord::Schema.define(version: 20141019061911) do
 
   add_index "user_article_categories", ["admin_user_id", "article_category_id"], name: "usr_article_cat", unique: true, using: :btree
 
+  create_table "user_article_sub_categories", force: true do |t|
+    t.integer  "user_article_category_id", null: false
+    t.integer  "article_sub_category_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   add_foreign_key "article_sub_categories", "article_categories", name: "article_sub_categories_article_category_id_fk"
 
   add_foreign_key "articles", "user_article_categories", name: "articles_user_article_category_id_fk"
+  add_foreign_key "articles", "user_article_sub_categories", name: "articles_user_article_sub_category_id_fk"
 
   add_foreign_key "user_article_categories", "admin_users", name: "user_article_categories_admin_user_id_fk"
   add_foreign_key "user_article_categories", "article_categories", name: "user_article_categories_article_category_id_fk"
+
+  add_foreign_key "user_article_sub_categories", "article_sub_categories", name: "user_article_sub_categories_article_sub_category_id_fk"
+  add_foreign_key "user_article_sub_categories", "user_article_categories", name: "user_article_sub_categories_user_article_category_id_fk"
 
 end

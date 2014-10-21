@@ -125,7 +125,7 @@ hr {
   top: 3.5em; /* 32px */
   left: auto;
   border-radius: 0.3125em; /* 5px / 16px */
-  background-color: grey;
+  background-color: #708090; /* 210° 13% 50% */
 }
 
 .menu-button:hover + .content-navigation {
@@ -142,11 +142,14 @@ hr {
 
 .content-navigation:hover {
   @extend %show-navigation;
-  li .content-sub-link {
+  & .content-sub-link {
     display: none;
   }
   li:hover .content-sub-link {
-    display: block;
+      display: block;
+      background-color: #434D56; /* 210° 13% 30% */
+      border-top: 0.041666666666666664em solid #ffffff; /* 1px / 24px */;
+      border-bottom: 0.041666666666666664em solid #ffffff;
   }
 }
   
@@ -159,10 +162,9 @@ hr {
     display: block;
     text-decoration: none;
     text-align: left;
-    color: #ffffff;
+    color: white; //#ffffff;
     font-size: 1.5em; /* 24px */
     padding: 0.5em 1em;
-    border-top: 0.041666666666666664em solid #ffffff; /* 1px / 24px */
     margin-left: 1px;
     white-space: nowrap;
     /*&:before {
@@ -179,7 +181,7 @@ hr {
 {
     @extend %navigation-anchors;
     padding-left: 2em;
-    background-color: lightgrey;
+    //background-color: lightgrey;
 }
 
 /*ul li a:hover 
@@ -258,6 +260,9 @@ li:hover li a:hover
     margin: 0 auto;
     color: white;
     background-color: lightgrey;
+    & a {
+      color: inherit;
+    }
   }
   & .section {
     display: block;
@@ -358,7 +363,7 @@ lt-ie7 .article-cell img {
 .spinner.large {
     height: 64px; width: 64px;
     background: url("spiffygif_64x64.gif");
-}*/
+}
 
 A new micro clearfix hack
 The clearfix hack is a popular way to contain floats without resorting to using presentational markup. This article presents an update to the clearfix method that further reduces the amount of CSS required.
@@ -371,7 +376,7 @@ The “micro clearfix” method is suitable for modern browsers and builds upon 
 
 Here is the updated code (I’ve used a shorter class name too):
 
-/**
+
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
  *    contenteditable attribute is included anywhere else in the document.

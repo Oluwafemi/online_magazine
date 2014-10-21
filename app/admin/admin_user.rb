@@ -1,10 +1,12 @@
 ActiveAdmin.register AdminUser do
-  permit_params :email, :password, :password_confirmation
+  permit_params :first_name, :last_name, :email, :password, :password_confirmation
   actions :all, :except => [:destroy]
   scope_to :current_admin_user, unless: proc{ current_admin_user.superuser? }
 
   show :title => :current_title do |admin_user|
     attributes_table do
+      row :first_name
+      row :last_name
       row :email
       row :sign_in_count
       row :current_sign_in_ip
@@ -28,7 +30,7 @@ ActiveAdmin.register AdminUser do
     end
 
     def create
-      admin = AdminUser.create(:email => params[:admin_user][:email], :superuser => params[:admin_user][:superuser])
+      admin = AdminUser.create(:first_name => params[:admin_user][:first_name], :last_name => params[:admin_user][:last_name], :email => params[:admin_user][:email], :superuser => params[:admin_user][:superuser])
       if admin.valid?
         cats = params[:admin_user][:article_category_ids] - [""]
         cats.each do |id|
@@ -42,6 +44,8 @@ ActiveAdmin.register AdminUser do
 
     def update
       admin = AdminUser.find(params[:id])
+      admin.first_name = params[:admin_user][:first_name]
+      admin.last_name = params[:admin_user][:last_name]
       admin.email = params[:admin_user][:email]
       
       if admin.id != current_admin_user.id
@@ -84,6 +88,7 @@ ActiveAdmin.register AdminUser do
   menu if: proc{ current_admin_user.superuser }
 
   index do
+    column :full_name
     column :email
     column :current_sign_in_at
     column :last_sign_in_at
@@ -109,7 +114,9 @@ ActiveAdmin.register AdminUser do
 
   form do |f|
     if f.object.persisted?
-      f.inputs do  
+      f.inputs do
+        f.input :first_name
+        f.input :last_name
         f.input :email
         if current_admin_user.id != f.object.id
           f.input :superuser, :label => "Super User Priveleges" 
@@ -118,7 +125,9 @@ ActiveAdmin.register AdminUser do
       end
     else
       f.inputs do
-        f.input :email 
+        f.input :first_name
+        f.input :last_name
+        f.input :email
         f.input :superuser, :label => "Super User Priveleges" 
         f.input :article_categories, :as => :check_boxes, :multiple => true, :collection => ArticleCategory.all, :required => false      
       end

@@ -5,7 +5,8 @@
     - recent_articles.each do |article|
       %article.article-cell
         %h3
-          = article_category.name
+          %a{:href => article_category_path(article_category) }
+            = article_category.name
         %p
           %a{:href => "#"}
             = image_tag article.image.to_s, class: "aws-image", alt: "Caption Photo For Article; #{article.title}"

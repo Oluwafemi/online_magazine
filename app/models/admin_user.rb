@@ -10,10 +10,12 @@ class AdminUser < ActiveRecord::Base
    
   devise :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable
 
-  validates :email, :presence => true
+  before_validation :normalize_full_names, on: [:create, :update]
+
+  validates :first_name, :last_name, :email, presence: true
 
   def admin_user_params 
-    params.require(:admin_user).permit(:email, :password, :password_confirmation, :remember_me, :superuser)
+    params.require(:admin_user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :superuser)
   end
   
   def password_required?
@@ -39,5 +41,15 @@ class AdminUser < ActiveRecord::Base
   def current_title
     email
   end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  protected
+    def normalize_full_names
+      self.first_name = self.first_name.downcase.titleize
+      self.last_name = self.last_name.downcase.titleize
+    end
 
 end

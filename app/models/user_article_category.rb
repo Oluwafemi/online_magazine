@@ -1,12 +1,13 @@
 class UserArticleCategory < ActiveRecord::Base
   has_many :articles#, :dependent => :destroy
+  has_many :user_article_sub_categories
   
   belongs_to :admin_user
   belongs_to :article_category
 
   delegate :name, :to => :article_category, :prefix => true
   
-  validates :admin_user_id, :article_category_id, :presence => true
+  validates :admin_user_id, :article_category_id, presence: true
   
   def permitted_params
   	params.require(:user_article_category).permit(:admin_user_id, :article_category_id, :enabled)
@@ -28,6 +29,14 @@ class UserArticleCategory < ActiveRecord::Base
 
   def currently_active_article_category
     article_category.currently_active
+  end
+
+  def creator
+    admin_user
+  end
+
+  def creator_name
+    admin_user.full_name
   end
 
 end

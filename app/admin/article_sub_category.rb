@@ -3,6 +3,13 @@ ActiveAdmin.register ArticleSubCategory do
   actions :all, :except => [:destroy]
   permit_params :title, :article_category_id, :allow_readers_comment, :active
   #navigation_menu :article_category
+
+  controller do
+    def change_article_sub_categories
+      @article_sub_categories = ArticleCategory.find_by_id(params[:category_id]).try(:article_sub_categories)
+      render :text => view_context.options_from_collection_for_select(@article_sub_categories, :id, :title)
+    end
+  end
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

@@ -10,6 +10,16 @@ OnlineMagazine::Application.routes.draw do
 
   get '/contact', :to => 'static_pages#contact'
 
+  resources :article_categories do
+    resources :article_sub_categories do
+      resources :articles
+    end
+  end
+
+  resources :article_categories do
+    resources :articles
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

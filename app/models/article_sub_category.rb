@@ -1,5 +1,7 @@
 class ArticleSubCategory < ActiveRecord::Base
 	  belongs_to :article_category
+    has_many :user_article_sub_categories
+    has_many :articles, :through => :user_article_sub_categories
 
     validates :title, presence: true, uniqueness: true, length: { :in => 1..18 }
 
@@ -13,7 +15,7 @@ class ArticleSubCategory < ActiveRecord::Base
 
     def currently_active
     	active
-	end
+	  end
 
     protected
     	def normalize_title
