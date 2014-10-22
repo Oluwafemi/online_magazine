@@ -103,10 +103,9 @@ ActiveAdmin.register AdminUser do
       if user.encrypted_password == ''
         delete = link_to("Details", admin_admin_user_path(user)) + delete.try(:html_safe)
       else
-        delete = " | " + link_to("Delete", admin_admin_user_path(user), :method => :delete, :confirm => "Are you sure?") unless current_admin_user == user
-      
+        #delete = " | " + link_to("Delete", admin_admin_user_path(user), :method => :delete, :confirm => "Are you sure?") unless current_admin_user == user
         link_to("Details", admin_admin_user_path(user)) + " | " + \
-        link_to("Edit", edit_admin_admin_user_path(user)) + delete.try(:html_safe)
+        link_to("Edit", edit_admin_admin_user_path(user))
       end
     end
   end
